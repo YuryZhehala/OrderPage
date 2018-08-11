@@ -16,6 +16,8 @@ body {
   max-height: 100%;
   margin: auto;
   display: flex;
+  position: relative;
+  min-height: 100%;
 }
 
 /* --------------------Sidebar styles (left part of the page) --------------------*/
@@ -31,35 +33,44 @@ body {
   background-color: white;
   border-right: 1px solid rgb(223, 227, 236);
 }
-.back-button {
+.move-back {
   flex: 1;
+  margin: auto;
+  padding-bottom: 0px;
+  padding-top: 2px;
 }
-.back-button svg {
+.move-back img {
   width: 11px;
   height: 11px;
   position: relative;
   fill: #000;
 }
-.sidebar header p {
+.sidebar header h1 {
   flex: 15;
   margin: auto;
   text-align: center;
-  padding: 1px 1px 5px 1px;
+  padding: 5px 1px 5px 0;
   font-size: 12px;
+  font-weight: normal;
 }
 .orders-list {
   border-right: 1px solid lightgray;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   flex: 2;
 }
-.sidebar-search svg {
+.orders-list ul {
+  padding-left: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+.sidebar-search img {
   width: 11px;
   height: 11px;
   position: relative;
   fill: #000;
 }
-.sidebar-reload svg {
+.sidebar-reload img {
   width: 15px;
   height: 15px;
   position: relative;
@@ -68,9 +79,9 @@ body {
 .sidebar-search,
 .sidebar-reload,
 .sidebar header button,
-.footer-funnel,
-.footer-menu,
-.footer-mail {
+.filter-settings,
+.menu-bar,
+.send-mail {
   background: none;
   border: none;
   outline: none;
@@ -80,17 +91,17 @@ body {
   flex: 0;
   border-right: 1px solid rgb(223, 227, 236);
   border-bottom: 1px solid rgb(223, 227, 236);
-  padding: 3px;
+  padding: 0 3px 3px 3px;
   background-color: white;
 }
 .sidebar-search {
   position: absolute;
-  top: 6px;
+  top: 3px;
   right: 27px;
 }
 .sidebar-reload {
   position: absolute;
-  top: 5px;
+  top: 2px;
   right: 2px;
 }
 .search-wrap input::placeholder {
@@ -100,15 +111,14 @@ body {
   width: 100%;
   padding: 1px 45px 1px 1px;
 }
-.order-number ul,
-.order-detales ul {
+.order-number div,
+.order-details ul {
   list-style-type: none;
   display: block;
   padding: 0;
   margin: 0;
 }
 .order-number {
-  color: black;
   background-color: white;
   padding: 10px 10px 10px 10px;
   display: flex;
@@ -116,30 +126,29 @@ body {
   border-bottom: 1px solid rgb(236, 236, 236);
   text-decoration: none;
 }
-.order-number ul:first-child li {
+.order-number div:first-child div {
   max-width: 140px;
   max-height: 120px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: black;
 }
-.order-number ul:first-child li {
+.order-number div:first-child div {
   font-size: 11px;
   margin: 4px 4px 10px 4px;
 }
-.order-number ul:last-child li {
+.order-number div:last-child div {
   font-size: 11px;
   margin: 4px 4px 10px 4px;
   text-align: right;
 }
-.order-number ul:first-child li:first-child {
+.order-number div:first-child div:first-child {
   font-size: 14px;
 }
-.order-number ul:last-child li:first-child {
+.order-number div:last-child div:first-child {
   font-size: 18px;
 }
-.order-number ul:last-child li:last-child {
+.order-number div:last-child div:last-child {
   font-size: 10px;
   color: green;
 }
@@ -152,13 +161,13 @@ footer {
   background-color: rgb(47, 59, 71);
   text-align: right;
 }
-.footer-funnel svg,
-.footer-menu svg,
-.footer-mail svg {
+.filter-settings img,
+.menu-bar img,
+.send-mail img {
   width: 15px;
   height: 15px;
   position: relative;
-  fill: LightCyan;
+
   margin: 6px 2px 2px 2px;
 }
 
@@ -173,21 +182,20 @@ footer {
   flex: 0;
   background-color: rgb(239, 244, 248);
   border-bottom: 1px solid rgb(223, 227, 236);
-  padding: 1px 1px 5px 1px;
+  padding: 5px 1px 5px 1px;
   text-align: center;
   font-size: 12px;
 }
-.order-information-wraper {
+.order-information-wrapper {
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
-.order-detales {
+.order-details {
   background-color: rgb(239, 244, 248);
   border-bottom: 2px solid rgb(223, 227, 236);
-  flex: 1;
 }
 .order-price {
   display: flex;
@@ -208,7 +216,6 @@ footer {
 }
 .order-price div h1 {
   font-weight: normal;
-  font-size: 16px;
   margin: 0;
 }
 .order-price div h2 {
@@ -223,7 +230,7 @@ footer {
 .customer-details ul li {
   margin: 10px 10px 10px 0;
 }
-/* Shipping address and customer detales TABS */
+/* Shipping address and customer details TABS */
 .tab-bar {
   margin: 0 0 -2px 20px;
 }
@@ -249,7 +256,7 @@ footer {
   border: 1px solid rgb(14, 79, 133);
 }
 .tab-bar ul li:nth-child(2n + 1)::before {
-  content: '';
+  content: "";
   width: 100%;
   height: 100%;
   position: absolute;
@@ -288,45 +295,41 @@ footer {
   background-color: rgb(14, 79, 133);
   transition: 0.7s ease-in-out;
 }
-/* Shipping address and customer detales INFORMATION */
+/* Shipping address and customer details INFORMATION */
 .shipping-address {
   background-color: white;
   border-bottom: 2px solid rgb(223, 227, 236);
   flex: 2;
 }
-.shipping-address table {
+.shipping-address h1 {
+  font-weight: normal;
   width: 95%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 12px;
-  border: 1px solid white;
-  margin-bottom: 25px;
-}
-.shipping-address table caption {
-  text-align: left;
-  padding: 20px 2px 8px 8px;
-  font-size: 14px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 0 0 10px 10px;
   border-bottom: 2px solid rgb(223, 227, 236);
 }
-.shipping-address table tr:first-child th,
-.shipping-address table tr:first-child td {
-  padding: 5px 0 0 10px;
+.shipping-address form {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
-.shipping-address table tr td {
-  padding: 0 0 0 10px;
-}
-.shipping-address table th {
-  text-align: right;
-  font-weight: normal;
+.address-details {
   width: 30%;
-  padding: 2px 2px 2px 2px;
+  display: inline-block;
+  text-align: right;
+  font-size: 12px;
+  margin: 3px 3px 3px 3px;
+}
+.address-details::after {
+  content: ":";
+  padding-right: 2px;
 }
 /* Table with information about product */
-.product-detales {
+.product-details {
   flex: 3;
   background-color: whitesmoke;
 }
-.product-detales table {
+.product-details table {
   width: 95%;
   border-collapse: collapse;
   text-align: left;
@@ -337,24 +340,15 @@ footer {
   background-color: white;
   border-bottom: 2px solid rgb(214, 214, 214);
 }
-.product-detales table caption {
+.product-details table caption {
   text-align: left;
   padding: 2px 2px 8px 8px;
   font-size: 14px;
 }
-.product-detales table tr:nth-last-child(2n) td:first-child {
+.highlight-text {
   font-weight: bold;
 }
-.product-detales table tr:nth-last-child(2n) td:nth-child(3),
-.product-detales table tr:nth-last-child(2n) td:nth-child(6) {
-  text-align: left;
-  width: 30px;
-}
-.product-detales table tr:nth-last-child(2n) td:nth-child(2),
-.product-detales table tr:nth-last-child(2n) td:nth-child(5) {
-  font-weight: bold;
-}
-.product-detales table th {
+.product-details table th {
   font-weight: normal;
   border: rgb(247, 247, 247);
   border-bottom: 2px solid rgb(214, 214, 214) !important;
@@ -363,17 +357,17 @@ footer {
   padding: 5px 0 5px 0;
   text-align: right;
 }
-.product-detales table td {
+.product-details table td {
   border: white;
   border-bottom: 1px solid rgb(214, 214, 214);
   text-align: right;
 }
-.product-detales table td:nth-child(1),
-.product-detales table th:nth-child(1) {
+.product-details table td:nth-child(1),
+.product-details table th:nth-child(1) {
   text-align: left;
   border-bottom: 1px solid white;
 }
-.product-detales table td:only-of-type {
+.product-details table td:only-of-type {
   border-bottom: 1px solid rgb(214, 214, 214);
 }
 
