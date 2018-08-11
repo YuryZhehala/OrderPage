@@ -50,7 +50,7 @@ body {
 .orders-list {
   border-right: 1px solid lightgray;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: auto;
   flex: 2;
 }
 .sidebar-search svg {
