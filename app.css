@@ -313,6 +313,9 @@ footer {
   margin-top: 10px;
   margin-bottom: 20px;
 }
+.shipping-address input {
+  border: none;
+}
 .address-details {
   width: 30%;
   display: inline-block;
