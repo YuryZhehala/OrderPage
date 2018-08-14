@@ -1,0 +1,12 @@
+{
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "prettier.singleQuote": false,
+    "prettier.trailingComma": "all",
+    "prettier.tabWidth": 4,
+    "files.autoSave": "afterDelay",
+    "editor.minimap.enabled": false,
+    "files.defaultLanguage": "html",
+    "editor.smoothScrolling": true,
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+}
