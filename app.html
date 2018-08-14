@@ -2,177 +2,178 @@
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Order Base</title>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-	 crossorigin="anonymous">
-	<link rel="stylesheet" href="app.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Order Base</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
-	<div class="page-wrapper">
-		<aside class="sidebar">
-			<header>
-				<button class="move-back">
-					<img src="media/back.svg">
-				</button>
-				<h1 id="orders-quantity">Orders(10)</h1>
-			</header>
-			<div class="search-wrap">
-				<input type="search" id="searching-info" placeholder="Search">
-				<button class="sidebar-search" type="button" id="search-order-button" value=" ">
-					<img src="media/glass.svg">
-				</button>
-				<button class="sidebar-reload" type="button" id="reload-button" value=" ">
-					<img src="media/reload.svg">
-				</button>
-			</div>
-			<nav class="orders-list" id="orders-list">
-			</nav>
-			<footer>
-				<button class="filter-settings">
-					<img src="media/filter.svg">
-				</button>
-				<button class="menu-bar">
-					<img src="media/menu.svg">
-				</button>
-			</footer>
-		</aside>
-		<article class="order-information">
-			<header>Order</header>
-			<article class="order-information-wrapper">
-				<div class="order-details">
-					<div class="order-price">
-						<div>
-							<h1 id="order-id">Please select the order from the list</h1>
-						</div>
-						<div>
-							<h1 id="total-price"></h1>
-							<h2 id="currency"></h2>
-						</div>
-					</div>
-					<div class="customer-details">
-						<ul>
-							<li id="order-customer"></li>
-							<li id="ordered-date"></li>
-							<li id="order-shipped"></li>
-						</ul>
-					</div>
-					<div class="tab-bar hide-content" id="tab-bar">
-						<ul>
-							<li id="shipping-tab">
-								<i class="fas fa-truck"></i>
-							</li>
-							<li class="tab-underline"></li>
-							<li id="customer-tab">
-								<i class="far fa-user"></i>
-							</li>
-							<li class="tab-underline"></li>
-						</ul>
-					</div>
-				</div>
-				<div class="customer-information hide-content" id="customer-information">
-					<h1></h1>
-					<form>
-						<div>
-							<label class="information-details-label"></label>
-							<input class="information-details" id="customer-full-name" value="" readonly/>
-						</div>
-						<div>
-							<label class="information-details-label"></label>
-							<input class="information-details" id="customer-street" value="" readonly/>
-						</div>
-						<div>
-							<label class="information-details-label"></label>
-							<input class="information-details" id="customer-zip-code" value="" readonly/>
-						</div>
-						<div>
-							<label class="information-details-label"></label>
-							<input class="information-details" id="customer-region" value="" readonly/>
-						</div>
-						<div>
-							<label class="information-details-label"></label>
-							<input class="information-details" id="customer-country" value="" readonly/>
-						</div>
-					</form>
-				</div>
-				<div class="products-table-area">
-					<div class="hide-content" id="products-table-wrapper">
-						<div id="line-items">Line Items()</div>
-						<div class="search-wrap" id="products-search-wrap">
-							<input type="search" id="searching-products" placeholder="Поиск">
+  <div class="page-wrapper">
+    <aside class="sidebar">
+      <header>
+        <button class="move-back">
+          <img src="media/back.svg">
+        </button>
+        <h1 id="orders-quantity">Orders(10)</h1>
+      </header>
+      <div class="search-wrap">
+        <input type="search" id="searching-info" placeholder="Search">
+        <button class="sidebar-search" type="button" id="search-order-button" value=" ">
+          <img src="media/glass.svg">
+        </button>
+        <button class="sidebar-reload" type="button" id="reload-button" value=" ">
+          <img src="media/reload.svg">
+        </button>
+      </div>
+      <nav class="orders-list" id="orders-list">
+      </nav>
+      <footer>
+        <button class="filter-settings">
+          <img src="media/filter.svg">
+        </button>
+        <button class="menu-bar">
+          <img src="media/menu.svg">
+        </button>
+      </footer>
+    </aside>
+    <article class="order-information">
+      <header>Order</header>
+      <article class="order-information-wrapper">
+        <div class="order-details">
+          <div class="order-price">
+            <div>
+              <h1 id="order-id">Please select the order from the list</h1>
+            </div>
+            <div>
+              <h1 id="total-price"></h1>
+              <h2 id="currency"></h2>
+            </div>
+          </div>
+          <div class="customer-details">
+            <ul>
+              <li id="order-customer"></li>
+              <li id="ordered-date"></li>
+              <li id="order-shipped"></li>
+            </ul>
+          </div>
+          <div class="tab-bar hide-content" id="tab-bar">
+            <ul>
+              <li id="shipping-tab">
+                <i class="fas fa-truck"></i>
+              </li>
+              <li class="tab-underline"></li>
+              <li id="customer-tab">
+                <i class="far fa-user"></i>
+              </li>
+              <li class="tab-underline"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="customer-information hide-content" id="customer-information">
+          <h1></h1>
+          <form>
+            <div>
+              <label class="information-details-label"></label>
+              <input class="information-details" id="customer-full-name" value="" readonly/>
+            </div>
+            <div>
+              <label class="information-details-label"></label>
+              <input class="information-details" id="customer-street" value="" readonly/>
+            </div>
+            <div>
+              <label class="information-details-label"></label>
+              <input class="information-details" id="customer-zip-code" value="" readonly/>
+            </div>
+            <div>
+              <label class="information-details-label"></label>
+              <input class="information-details" id="customer-region" value="" readonly/>
+            </div>
+            <div>
+              <label class="information-details-label"></label>
+              <input class="information-details" id="customer-country" value="" readonly/>
+            </div>
+          </form>
+        </div>
+        <div class="products-table-area">
+          <div class="hide-content" id="products-table-wrapper">
+            <div id="line-items">Line Items()</div>
+            <div class="search-wrap" id="products-search-wrap">
+              <input type="search" id="searching-products" placeholder="Поиск">
 
-							<button class="sidebar-search" type="button" id="search-product-button" value=" ">
-								<img src="media/glass.svg">
-							</button>
-							<button class="sidebar-reload" type="button" id="products-reload-button" value=" ">
-								<img src="media/reload.svg">
-							</button>
-						</div>
-						<table border="1" align="center" id="products-table">
-							<thead>
-								<tr>
-									<th>
-										<div class="sort-button-wrapper">
-											<div>Product</div>
-											<div>
-												<button class="sort direct-button" data-type="string" cell-index='0'>&#11015;</button>
-											</div>
-											<div>
-												<button class="sort reverse-button" data-type="string" cell-index='0'>&#11014;</button>
-											</div>
-										</div>
-									</th>
-									<th>
-										<div class="sort-button-wrapper flex-end">
-											<div>Unit Price</div>
-											<div>
-												<button class="sort direct-button" data-type="number" cell-index='1'>&#11015;</button>
-											</div>
-											<div>
-												<button class="sort reverse-button" data-type="number" cell-index='1'>&#11014;</button>
-											</div>
-										</div>
-									</th>
-									<th>
-										<div class="sort-button-wrapper flex-end">
-											<div>Quantity</div>
-											<div>
-												<button class="sort direct-button" data-type="number" cell-index='2'>&#11015;</button>
-											</div>
-											<div>
-												<button class="sort reverse-button" data-type="number" cell-index='2'>&#11014;</button>
-											</div>
-										</div>
-									</th>
-									<th>
-										<div class="sort-button-wrapper flex-end">
-											<div>Total</div>
-											<div>
-												<button class="sort direct-button" data-type="number" cell-index='3'>&#11015;</button>
-											</div>
-											<div>
-												<button class="sort reverse-button" data-type="number" cell-index='3'>&#11014;</button>
-											</div>
-										</div>
-									</th>
-								</tr>
-							</thead>
-							<tbody id="products-tbody">
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</article>
-			<footer>
-				<button class="send-mail">
-					<img src="media/mail.svg">
-				</button>
-			</footer>
-		</article>
-	</div>
-	<script src="data.js"></script>
-	<script src="index.js"></script>
+              <<<<<<< HEAD <button class="sidebar-search" type="button" id="search-product-button" value=" ">
+                <img src="media/glass.svg">
+                </button>
+                <button class="sidebar-reload" type="button" id="products-reload-button" value=" ">
+                  <img src="media/reload.svg">
+                </button>
+            </div>
+            <table border="1" align="center" id="products-table">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="sort-button-wrapper">
+                      <div>Product</div>
+                      <div>
+                        <button class="sort direct-button" data-type="string" cell-index='0'>&#11015;</button>
+                      </div>
+                      <div>
+                        <button class="sort reverse-button" data-type="string" cell-index='0'>&#11014;</button>
+                      </div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="sort-button-wrapper flex-end">
+                      <div>Unit Price</div>
+                      <div>
+                        <button class="sort direct-button" data-type="number" cell-index='1'>&#11015;</button>
+                      </div>
+                      <div>
+                        <button class="sort reverse-button" data-type="number" cell-index='1'>&#11014;</button>
+                      </div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="sort-button-wrapper flex-end">
+                      <div>Quantity</div>
+                      <div>
+                        <button class="sort direct-button" data-type="number" cell-index='2'>&#11015;</button>
+                      </div>
+                      <div>
+                        <button class="sort reverse-button" data-type="number" cell-index='2'>&#11014;</button>
+                      </div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="sort-button-wrapper flex-end">
+                      <div>Total</div>
+                      <div>
+                        <button class="sort direct-button" data-type="number" cell-index='3'>&#11015;</button>
+                      </div>
+                      <div>
+                        <button class="sort reverse-button" data-type="number" cell-index='3'>&#11014;</button>
+                      </div>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="products-tbody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+      <footer>
+        <button class="send-mail">
+          <img src="media/mail.svg">
+        </button>
+      </footer>
+    </article>
+  </div>
+  <script src="data.js"></script>
+  <script src="index.js"></script>
+
 </body>
 
 </html>
