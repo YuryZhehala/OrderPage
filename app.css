@@ -67,20 +67,25 @@ body {
     margin-bottom: 0px;
     margin-top: 0px;
 }
+#searching-info:hover {
+    outline: 1px dotted darkgray;
+}
 .sidebar-search img {
     width: 11px;
     height: 11px;
     position: relative;
     fill: #000;
+    cursor: pointer;
 }
-.sidebar-reload img {
+.input-reload img {
     width: 15px;
     height: 15px;
     position: relative;
     fill: #000;
+    cursor: pointer;
 }
 .sidebar-search,
-.sidebar-reload,
+.input-reload,
 .sidebar header button,
 .filter-settings,
 .menu-bar,
@@ -103,7 +108,7 @@ body {
     top: 3px;
     right: 27px;
 }
-.sidebar-reload {
+.input-reload {
     position: absolute;
     top: 2px;
     right: 2px;
@@ -129,6 +134,7 @@ body {
     justify-content: space-between;
     border-bottom: 1px solid rgb(236, 236, 236);
     text-decoration: none;
+    cursor: pointer;
 }
 .order-number div:first-child div {
     max-width: 140px;
@@ -136,7 +142,6 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    cursor: auto;
     font-size: 11px;
     margin: 4px 4px 10px 4px;
 }
@@ -144,7 +149,6 @@ body {
     font-size: 11px;
     margin: 4px 4px 10px 4px;
     text-align: right;
-    cursor: auto;
 }
 .order-number div:first-child div:first-child {
     font-size: 14px;
@@ -163,6 +167,9 @@ body {
     background: rgb(232, 239, 247);
     cursor: pointer;
 }
+.highlight {
+    background: rgb(232, 239, 247);
+}
 footer {
     border-right: 1px solid rgb(183, 193, 205);
     flex: 0;
@@ -175,7 +182,6 @@ footer {
     width: 15px;
     height: 15px;
     position: relative;
-
     margin: 6px 2px 2px 2px;
 }
 
@@ -280,17 +286,21 @@ footer {
 .tab-bar ul li:nth-child(2n + 1):hover:before {
     transform: scale(1.05);
 }
-.active-action {
-    transform: scale(1.05);
-}
 .tab-bar ul li:nth-child(2n + 1):hover {
     color: white;
 }
-.tab-underline {
+.customer-tab-underline,
+.shipping-tab-underline {
     width: 40px;
     height: 2px;
     background-color: rgb(223, 227, 236);
     position: absolute;
+}
+.highlight-tab1 ~ li:nth-child(2) {
+    background-color: rgb(14, 79, 133);
+}
+.highlight-tab2 ~ li:nth-child(4) {
+    background-color: rgb(14, 79, 133);
 }
 .tab-bar ul li:nth-child(2) {
     top: 54px;
@@ -356,9 +366,10 @@ footer {
 }
 .sort-button-wrapper {
     display: flex;
-}
-.flex-end {
     justify-content: flex-end;
+}
+.aligning-to-left {
+    justify-content: flex-start;
 }
 .sort {
     width: 10px;
