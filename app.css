@@ -20,7 +20,12 @@ body {
     min-height: 100%;
 }
 .hide-content {
-    display: none;
+    display: none !important;
+}
+.empty-list-message {
+    padding: 10px;
+    text-align: center;
+    font-style: italic;
 }
 
 /* --------------------Sidebar styles (left part of the page) --------------------*/
@@ -90,7 +95,19 @@ body {
 .filter-settings,
 .menu-bar,
 .send-mail,
-.sort {
+.sort,
+.add-order,
+#edit-customer,
+#edit-shipping,
+#save-customer,
+#save-shipping,
+#cancel-customer,
+#cancel-shipping,
+.delete-order,
+#close-order-form,
+#close-product-form,
+#add-product,
+.delete-product {
     background: none;
     border: none;
     outline: none;
@@ -170,6 +187,23 @@ body {
 .highlight {
     background: rgb(232, 239, 247);
 }
+#new-order-form,
+#new-product-form {
+    width: 500px;
+    height: 300px;
+    margin: 50px auto;
+    background: #fff;
+    z-index: 200;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+}
+#new-product-form {
+    height: 120px;
+}
 footer {
     border-right: 1px solid rgb(183, 193, 205);
     flex: 0;
@@ -178,14 +212,56 @@ footer {
 }
 .filter-settings img,
 .menu-bar img,
-.send-mail img {
+.send-mail img,
+.add-order img {
     width: 15px;
     height: 15px;
-    position: relative;
     margin: 6px 2px 2px 2px;
+}
+#close-order-form,
+#close-product-form {
+    float: right;
+    padding: 0;
+}
+#close-order-form img,
+#close-product-form img {
+    width: 30px;
+    height: 30px;
+}
+#upload-order,
+#upload-product {
+    float: right;
+    border: none;
+    background-color: rgb(56, 69, 79);
+    color: lightcyan;
+    height: 28px;
+}
+
+.delete-order {
+    color: lightcyan;
+}
+.delete-order div {
+    float: left;
+    padding-left: 4px;
+}
+.delete-order img {
+    width: 15px;
+    height: 15px;
+}
+.add-order-message {
+    border: none;
+    text-align: center;
+    position: relative;
+    left: 50px;
+    font-size: 20px;
+    font-style: italic;
 }
 
 /* --------------------Order information styles (right scrolled part of the page) --------------------*/
+#onload-message {
+    text-align: center;
+    font-size: 20px;
+}
 /* Common information about order */
 .order-information {
     flex: 3;
@@ -290,7 +366,8 @@ footer {
     color: white;
 }
 .customer-tab-underline,
-.shipping-tab-underline {
+.shipping-tab-underline,
+.map-tab-underline {
     width: 40px;
     height: 2px;
     background-color: rgb(223, 227, 236);
@@ -302,6 +379,9 @@ footer {
 .highlight-tab2 ~ li:nth-child(4) {
     background-color: rgb(14, 79, 133);
 }
+.highlight-tab3 ~ li:nth-child(6) {
+    background-color: rgb(14, 79, 133);
+}
 .tab-bar ul li:nth-child(2) {
     top: 54px;
 }
@@ -309,6 +389,14 @@ footer {
     top: 54px;
     left: 68px;
 }
+.tab-bar ul li:nth-child(6) {
+    top: 54px;
+    left: 136px;
+}
+/* .tab-bar ul li:nth-child(2) {
+    background-color: rgb(14, 79, 133);
+    transition: 0.7s ease-in-out;
+} */
 .tab-bar ul li:nth-child(1):hover ~ li:nth-child(2) {
     background-color: rgb(14, 79, 133);
     transition: 0.7s ease-in-out;
@@ -317,40 +405,108 @@ footer {
     background-color: rgb(14, 79, 133);
     transition: 0.7s ease-in-out;
 }
+.tab-bar ul li:nth-child(5):hover ~ li:nth-child(6) {
+    background-color: rgb(14, 79, 133);
+    transition: 0.7s ease-in-out;
+}
+.map {
+    width: 100%;
+    height: 200px;
+}
 /* Shipping address and customer details INFORMATION */
+#popup-background {
+    opacity: 0.8;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+    background-color: rgba(1, 1, 1, 0.725);
+    z-index: 100;
+    overflow: auto;
+}
+
+/* #edit-shipping-window {
+    width: 400px;
+    height: 400px;
+    margin: 50px auto;
+
+    background: #fff;
+    z-index: 200;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+} */
+#edit-customer,
+#edit-shipping,
+#save-customer,
+#save-shipping,
+#cancel-customer,
+#cancel-shipping {
+    padding-top: 25px;
+}
 .customer-information {
     background-color: white;
     border-bottom: 2px solid rgb(223, 227, 236);
     flex: 2;
 }
-.customer-information h1 {
-    font-weight: normal;
+.customer-information-header {
+    display: flex;
+    justify-content: space-between;
     width: 95%;
     margin: auto;
-    margin-top: 20px;
-    padding: 0 0 10px 10px;
     border-bottom: 2px solid rgb(223, 227, 236);
+}
+.customer-information-header h1 {
+    font-weight: normal;
+    margin: 20px 20px 15px 35px;
 }
 .customer-information form {
     margin-top: 10px;
     margin-bottom: 20px;
 }
 .customer-information input {
-    border: none;
     min-width: 250px;
 }
-.information-details-label {
-    width: 30%;
+.hide-input-border {
+    border: none;
+}
+.information-details-label,
+.new-order-field,
+.new-product-field {
+    width: 17%;
     display: inline-block;
     text-align: right;
     font-size: 12px;
     margin: 3px 3px 3px 3px;
 }
-.information-details-label::after {
+.information-details-label::after,
+.new-order-field::after,
+.new-product-field::after {
     content: ":";
     padding-right: 2px;
 }
+
 /* Table with information about product */
+#add-product {
+    margin-top: 15px;
+    margin-right: 30px;
+    height: 25px;
+}
+
+#add-product img,
+.delete-product img {
+    width: 15px;
+    height: 15px;
+}
+#edit-table-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
 .products-table-area {
     flex: 3;
     background-color: whitesmoke;
@@ -359,10 +515,10 @@ footer {
     margin: 20px 20px 15px 35px;
 }
 #products-search-wrap {
-    width: 30%;
     margin: 15px 20px 15px 20px;
     padding: 0;
     margin-left: 35px;
+    min-width: 200px;
 }
 .sort-button-wrapper {
     display: flex;

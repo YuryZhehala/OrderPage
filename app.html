@@ -6,6 +6,7 @@
 	<title>Order Base</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	 crossorigin="anonymous">
+	<script src="https://maps.googleapis.com/maps/api/js?key="></script>
 	<link rel="stylesheet" href="app.css">
 </head>
 
@@ -16,7 +17,8 @@
 				<button class="move-back">
 					<img src="media/back.svg">
 				</button>
-				<h1 id="orders-quantity">Orders(10)</h1>
+				<h1>Orders(
+					<span id="orders-quantity"></span>)</h1>
 			</header>
 			<div class="search-wrap">
 				<input type="search" id="searching-info" placeholder="Search">
@@ -29,6 +31,57 @@
 			</div>
 			<nav class="orders-list" id="orders-list">
 			</nav>
+			<div class="hide-content" id="new-order-form">
+				<button id="close-order-form">
+					<img src="media/close.svg">
+				</button>
+				<form id="add-order-form">
+					<div>Customer info</div>
+					<div>
+						<label class="new-order-field">First Name</label>
+						<input type="text" class="new-order-details" id="new-first-name" value="" />
+					</div>
+					<div>
+						<label class="new-order-field">Last Name</label>
+						<input class="new-order-details" id="new-last-name" value="" />
+					</div>
+					<div>
+						<label class="new-order-field">Phone</label>
+						<input class="new-order-details" id="new-phone" value="" />
+					</div>
+					<div>
+						<label class="new-order-field">Email</label>
+						<input class="new-order-details" id="new-email" value="" />
+					</div>
+					<div>Shipping address </div>
+					<div>
+						<label class="new-order-field">Name</label>
+						<input class="new-order-details" id="new-name" value="" />
+					</div>
+					<div>
+						<label class="new-order-field">Address</label>
+						<input class="new-order-details" id="new-address" value="" />
+					</div>
+					<div>
+						<label class="new-order-field">ZIP Code/City</label>
+						<input class="new-order-details" id="new-zip" value="" />
+					</div>
+					<div>
+						<label class="new-order-field">Region</label>
+						<input class="new-order-details" id="new-region" value="" />
+					</div>
+					<div>
+						<label class="new-order-field">Country</label>
+						<input class="new-order-details" id="new-country" value="" />
+					</div>
+					<div>
+						<input type="button" id="upload-order" value="Add">
+					</div>
+					<div>
+						<input class="add-order-message hide-content" id="create-order-message" value="Order created!">
+					</div>
+				</form>
+			</div>
 			<footer>
 				<button class="filter-settings">
 					<img src="media/filter.svg">
@@ -36,26 +89,38 @@
 				<button class="menu-bar">
 					<img src="media/menu.svg">
 				</button>
+				<button class="add-order" id="add-order">
+					<img src="media/plus.svg">
+				</button>
 			</footer>
 		</aside>
 		<article class="order-information">
 			<header>Order</header>
 			<article class="order-information-wrapper">
 				<div class="order-details">
-					<div class="order-price">
+					<div id="onload-message"></div>
+					<div class="order-price hide-content" id="order-price">
 						<div>
-							<h1 id="order-id"></h1>
+							<h1>Order
+								<span id="order-id"></span>
+							</h1>
 						</div>
 						<div>
 							<h1 id="total-price"></h1>
 							<h2 id="currency"></h2>
 						</div>
 					</div>
-					<div class="customer-details" id="customer-details">
+					<div class="customer-details hide-content" id="customer-details">
 						<ul>
-							<li id="order-customer"></li>
-							<li id="ordered-date"></li>
-							<li id="order-shipped"></li>
+							<li>Customer:
+								<span id="order-customer"></span>
+							</li>
+							<li>Ordered:
+								<span id="ordered-date"></span>
+							</li>
+							<li>Shipped:
+								<span id="order-shipped"></span>
+							</li>
 						</ul>
 					</div>
 					<div class="tab-bar hide-content" id="tab-bar">
@@ -68,49 +133,74 @@
 								<i class="far fa-user"></i>
 							</li>
 							<li class="customer-tab-underline"></li>
+							<li id="map-tab">
+								<i class="fas fa-map-marked-alt"></i>
+							</li>
+							<li class="map-tab-underline"></li>
 						</ul>
 					</div>
 				</div>
 				<div class="customer-information hide-content" id="customer-information">
-					<h1></h1>
-					<form>
+					<div class="customer-information-header">
+						<h1></h1>
+						<div id="edit-shipping-wrapper">
+							<button id="edit-shipping">Edit</button>
+							<button class="hide-content" id="save-shipping">Save</button>
+							<button class="hide-content" id="cancel-shipping">Cancel</button>
+						</div>
+						<div class="hide-content" id="edit-customer-wrapper">
+							<button id="edit-customer">Edit</button>
+							<button class="hide-content" id="save-customer">Save</button>
+							<button class="hide-content" id="cancel-customer">Cancel</button>
+						</div>
+					</div>
+					<form id="shipping-customer-form">
 						<div>
 							<label class="information-details-label"></label>
-							<input class="information-details" id="customer-full-name" value="" readonly/>
+							<input class="information-details hide-input-border" id="customer-full-name" value="" readonly/>
 						</div>
 						<div>
 							<label class="information-details-label"></label>
-							<input class="information-details" id="customer-street" value="" readonly/>
+							<input class="information-details hide-input-border" id="customer-street" value="" readonly/>
 						</div>
 						<div>
 							<label class="information-details-label"></label>
-							<input class="information-details" id="customer-zip-code" value="" readonly/>
+							<input class="information-details hide-input-border" id="customer-zip-code" value="" readonly/>
 						</div>
 						<div>
 							<label class="information-details-label"></label>
-							<input class="information-details" id="customer-region" value="" readonly/>
+							<input class="information-details hide-input-border" id="customer-region" value="" readonly/>
 						</div>
 						<div>
 							<label class="information-details-label"></label>
-							<input class="information-details" id="customer-country" value="" readonly/>
+							<input class="information-details hide-input-border" id="customer-country" value="" readonly/>
 						</div>
 					</form>
+					<div id='map' class='map'></div>
 				</div>
 				<div class="products-table-area">
 					<div class="hide-content" id="products-table-wrapper">
-						<div id="line-items">Line Items()</div>
-						<div class="search-wrap" id="products-search-wrap">
-							<input type="search" id="searching-products" placeholder="Поиск">
-							<button class="sidebar-search" type="button" id="search-product-button" value=" ">
-								<img src="media/glass.svg">
-							</button>
-							<button class="input-reload" type="button" id="products-reload-button" value=" ">
-								<img src="media/reload.svg">
+						<div id="line-items">Line Items(
+							<span></span>)
+						</div>
+						<div id="edit-table-wrapper">
+							<div class="search-wrap" id="products-search-wrap">
+								<input type="search" id="searching-products" placeholder="Поиск">
+								<button class="sidebar-search" type="button" id="search-product-button" value=" ">
+									<img src="media/glass.svg">
+								</button>
+								<button class="input-reload" type="button" id="products-reload-button" value=" ">
+									<img src="media/reload.svg">
+								</button>
+							</div>
+							<button class="add-product" type="button" id="add-product" value=" ">
+								<img src="media/plus-blue.svg">
 							</button>
 						</div>
+
 						<table border="1" align="center" id="products-table">
 							<thead>
-								<tr>
+								<tr id="header-row">
 									<th>
 										<div class="sort-button-wrapper aligning-to-left">
 											<div>Product</div>
@@ -155,22 +245,61 @@
 											</div>
 										</div>
 									</th>
+									<th>
+										<div>
+										</div>
+									</th>
 								</tr>
 							</thead>
 							<tbody id="products-tbody">
 							</tbody>
 						</table>
+						<div class="hide-content" id="new-product-form">
+							<button id="close-product-form">
+								<img src="media/close.svg">
+							</button>
+							<form id="add-product-form">
+								<div>
+									<label class="new-product-field">Product</label>
+									<input type="text" class="new-product-details" id="new-product" value=""/>
+									
+								</div>
+								<div>
+									<label class="new-product-field">Unit Price</label>
+									<input type="text" class="new-product-details" id="new-product-price" value="" />
+								</div>
+								<div>
+									<label class="new-product-field">Quantity</label>
+									<input type="text" class="new-product-details" id="new-product-quantity" value="" />
+								</div>
+							</form>
+							<div>
+								<input type="button" id="upload-product" value="Add">
+							</div>
+							<div>
+								<input class="add-poduct-message hide-content" id="create-poduct-message" value="Product created!">
+							</div>
+						</div>
 					</div>
 				</div>
 			</article>
-			<footer>
-				<button class="send-mail">
+			<footer id="right-footer">
+				<button class="send-mail" id="send-mail">
 					<img src="media/mail.svg">
+				</button>
+				<button class="delete-order" id="delete-order">
+					<div>
+						<img src="media/trash.svg">
+					</div>
+					<div>Delete order</div>
 				</button>
 			</footer>
 		</article>
+		<div class="hide-content" id="popup-background"></div>
 	</div>
-	<script src="data.js"></script>
+	<!-- <script src="state.js"></script> -->
+	<script src="http-client.js"></script>
+	<!-- <script src="data.js"></script> -->
 	<script src="index.js"></script>
 
 </body>
