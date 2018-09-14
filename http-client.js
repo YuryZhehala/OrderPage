@@ -79,8 +79,3 @@ const HttpClient = {
         });
     }
 }
-
-// HttpClient.getOrders().then(function(Orders) {
-// })
-// xhr.open("POST", "http://localhost:3000/api/OrderProducts", true);
-// xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
